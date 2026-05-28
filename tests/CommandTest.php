@@ -109,4 +109,17 @@ class CommandTest extends TestCase
         $this->assertEquals("La comanda ha sido vaciada", $result);
     }
 
+    /**
+     * @test
+     */
+    public function givenAskCommandInstructionReturnsTotalCost(): void{
+        $command = new Command(new MenuStub());
+
+        $command->handle("añadir pizza");
+
+        $result = $command->handle("cuenta");
+
+        $this->assertEquals("Total: 10.00", $result);
+    }
+
 }
