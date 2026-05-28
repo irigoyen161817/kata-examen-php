@@ -13,7 +13,7 @@ class CommandTest extends TestCase
      * @test
      */
     public function givenAddPizzaReturnsPizza(): void{
-        $command = new Command();
+        $command = new Command(new MenuStub());
 
         $result = $command->handle("añadir pizza");
 
@@ -24,7 +24,7 @@ class CommandTest extends TestCase
      * @test
      */
     public function givenAddPizzaWithAmountReturnsPizzaXAmount(): void{
-        $command = new Command();
+        $command = new Command(new MenuStub());
 
         $result = $command->handle("añadir pizza 2");
 
@@ -35,7 +35,7 @@ class CommandTest extends TestCase
      * @test
      */
     public function givenMultipleAddInstructionsReturnsFullCommand(): void{
-        $command = new Command();
+        $command = new Command(new MenuStub());
 
         $command->handle("añadir chistorra");
         $result = $command->handle("añadir pizza");
