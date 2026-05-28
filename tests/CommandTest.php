@@ -96,4 +96,17 @@ class CommandTest extends TestCase
 
     }
 
+    /**
+     * @test
+     */
+    public function givenEmptyInstructionReturnsEmptyMessage(): void{
+        $command = new Command(new MenuStub());
+
+        $command->handle("añadir pizza");
+
+        $result = $command->handle("vaciar");
+
+        $this->assertEquals("La comanda ha sido vaciada", $result);
+    }
+
 }
