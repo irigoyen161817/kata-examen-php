@@ -50,6 +50,10 @@ class Command
             $this->command = [];
         }
 
+        if($action == "cuenta"){
+            return "Total: " . number_format($this->totalPrice, 2);
+        }
+
         if(empty($this->command)){
             return "La comanda ha sido vaciada";
         }
