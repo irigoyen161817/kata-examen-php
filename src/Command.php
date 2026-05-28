@@ -40,6 +40,9 @@ class Command
             unset($this->command[$food]);
             $this->totalPrice -= $totalToSubstract;
         }
+        if($action == "vaciar"){
+            $this->command = [];
+        }
 
         if(empty($this->command)){
             return "La comanda ha sido vaciada";
