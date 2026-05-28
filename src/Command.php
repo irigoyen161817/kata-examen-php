@@ -62,6 +62,7 @@ class Command
             return "La comanda ha sido vaciada";
         }
 
+        asort($this->command);
         $fullCommand = [];
         forEach($this->command as $key => $value){
             $fullCommand[] = $key . " x" . $value;
