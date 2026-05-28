@@ -41,6 +41,9 @@ class Command
             $this->totalPrice -= $totalToSubstract;
         }
 
+        if(empty($this->command)){
+            return "La comanda ha sido vaciada";
+        }
 
         $fullCommand = [];
         forEach($this->command as $key => $value){
