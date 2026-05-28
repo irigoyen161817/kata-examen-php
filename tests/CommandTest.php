@@ -85,6 +85,18 @@ class CommandTest extends TestCase
     /**
      * @test
      */
+    public function givenDeleteInstructionWithNonExistantFoodReturnsErrorMessage(): void{
+        $command = new Command(new MenuStub());
+
+        $result = $command->handle("eliminar pizza");
+
+        $this->assertEquals("El plato seleccionado no existe", $result);
+
+    }
+
+    /**
+     * @test
+     */
     public function whenCommandIsEmptyAfterDeleteReturnsEmptyMessage(): void{
         $command = new Command(new MenuStub());
 
