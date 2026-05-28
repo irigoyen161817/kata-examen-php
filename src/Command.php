@@ -6,6 +6,7 @@ class Command
 {
 
     private array $command = [];
+    private float  $totalPrice = 0;
 
     public function __construct(private Menu $menu)
     {
@@ -24,12 +25,14 @@ class Command
             return "El plato seleccionado no existe en el menú";
         }
 
+        $this->totalPrice += $price * $amount;
+
         $this->command[$food] = $this->command[$food] + $amount;
 
         $fullCommand = [];
         forEach($this->command as $key => $value){
             $fullCommand[] = $key . " x" . $value;
         }
-        return implode(", ",$fullCommand);
+        return implode(", ",$fullCommand) . " | Total: " . number_format($this->totalPrice, 2);
     }
 }
