@@ -3,6 +3,7 @@
 namespace Deg540\KataExamen\Test;
 
 use Deg540\KataExamen\Command;
+use Mockery;
 use PHPUnit\Framework\TestCase;
 
 class CommandTest extends TestCase
@@ -40,6 +41,20 @@ class CommandTest extends TestCase
 
         $this->assertEquals("chistorra x1, pizza x1", $result);
 
+    }
+
+    /**
+     * @test
+     */
+    public function givenNonExistantFoodInMenuReturnErrorMessage(): void{
+        $menuMock = Mockery::mock(Menu::class);
+        $command = new Command($menuMock);
+
+        $menuMock->shouldReceive("getPrize")->with("chistorra")->andReturn(null);
+
+        $result = $command->handle("añadir chistorra");
+
+        $this->assertEquals("El plato seleccionado no existe en el menú", $result);
     }
 
 }
