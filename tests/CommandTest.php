@@ -29,4 +29,14 @@ class CommandTest extends TestCase
         $this->assertEquals("pizza x2", $result);
     }
 
+    public function givenMultipleAddInstructionsReturnsFullCommand(): void{
+        $command = new Command();
+
+        $command->handle("añadir chistorra");
+        $result = $command->handle("añadir pizza");
+
+        $this->assertEquals("chistorra x1, pizza x1", $result);
+
+    }
+
 }
