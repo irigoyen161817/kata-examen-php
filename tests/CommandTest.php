@@ -3,6 +3,7 @@
 namespace Deg540\KataExamen\Test;
 
 use Deg540\KataExamen\Command;
+use Deg540\KataExamen\Menu;
 use Mockery;
 use PHPUnit\Framework\TestCase;
 
@@ -50,7 +51,7 @@ class CommandTest extends TestCase
         $menuMock = Mockery::mock(Menu::class);
         $command = new Command($menuMock);
 
-        $menuMock->shouldReceive("getPrize")->with("chistorra")->andReturn(null);
+        $menuMock->shouldReceive("getPrice")->with("chistorra")->andReturn(null);
 
         $result = $command->handle("añadir chistorra");
 
