@@ -12,23 +12,12 @@ class CommandTest extends TestCase
     /**
      * @test
      */
-    public function givenAddPizzaReturnsPizza(): void{
-        $command = new Command(new MenuStub());
-
-        $result = $command->handle("añadir pizza");
-
-        $this->assertEquals("pizza x1", $result);
-    }
-
-    /**
-     * @test
-     */
     public function givenAddPizzaWithAmountReturnsPizzaXAmount(): void{
         $command = new Command(new MenuStub());
 
         $result = $command->handle("añadir pizza 2");
 
-        $this->assertEquals("pizza x2", $result);
+        $this->assertEquals("pizza x2 | Total: 20.00", $result);
     }
 
     /**
@@ -40,7 +29,7 @@ class CommandTest extends TestCase
         $command->handle("añadir chistorra");
         $result = $command->handle("añadir pizza");
 
-        $this->assertEquals("chistorra x1, pizza x1", $result);
+        $this->assertEquals("chistorra x1, pizza x1 | Total: 20.00", $result);
 
     }
 
