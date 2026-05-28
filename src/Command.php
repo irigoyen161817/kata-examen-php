@@ -31,6 +31,7 @@ class Command
             $this->totalPrice += $price * $amount;
 
             $this->command[$food] = $this->command[$food] + $amount;
+
         }
 
         if($action == "eliminar"){
@@ -39,6 +40,11 @@ class Command
             $totalToSubstract = $price * $amount;
             unset($this->command[$food]);
             $this->totalPrice -= $totalToSubstract;
+            $fullCommand = [];
+            forEach($this->command as $key => $value){
+                $fullCommand[] = $key . " x" . $value;
+            }
+            return implode(", ",$fullCommand);
         }
         if($action == "vaciar"){
             $this->command = [];
@@ -52,6 +58,10 @@ class Command
         forEach($this->command as $key => $value){
             $fullCommand[] = $key . " x" . $value;
         }
-        return implode(", ",$fullCommand) . " | Total: " . number_format($this->totalPrice, 2);
+        $commandResult = implode(", ",$fullCommand);
+        if($action == "eliminar"){
+            $commandResult .= " | Total: " . number_format($this->totalPrice, 2);
+        }
+        return $commandResult;
     }
 }

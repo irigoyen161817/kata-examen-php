@@ -79,7 +79,7 @@ class CommandTest extends TestCase
         $command->handle("añadir chistorra");
 
         $result = $command->handle("eliminar pizza");
-        $this->assertEquals("chistorra x1 | Total: 10.00", $result);
+        $this->assertEquals("chistorra x1", $result);
     }
 
     /**
