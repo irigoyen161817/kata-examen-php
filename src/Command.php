@@ -13,6 +13,7 @@ class Command
     }
 
     public function handle($instruction): string{
+        $instruction = strtolower($instruction);
         $instruction = explode(" ", $instruction);
         $food = $instruction[1];
         $amount = 1;
