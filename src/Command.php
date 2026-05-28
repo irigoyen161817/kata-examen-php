@@ -15,20 +15,32 @@ class Command
     public function handle($instruction): string{
         $instruction = strtolower($instruction);
         $instruction = explode(" ", $instruction);
+        $action = $instruction[0];
         $food = $instruction[1];
-        $amount = 1;
-        if(isset($instruction[2])){
-            $amount = $instruction[2];
+        if($action == "añadir"){
+            $amount = 1;
+            if(isset($instruction[2])){
+                $amount = $instruction[2];
+            }
+
+            $price = $this->menu->getPrice($food);
+            if(!isset($price)){
+                return "El plato seleccionado no existe en el menú";
+            }
+
+            $this->totalPrice += $price * $amount;
+
+            $this->command[$food] = $this->command[$food] + $amount;
         }
 
-        $price = $this->menu->getPrice($food);
-        if(!isset($price)){
-            return "El plato seleccionado no existe en el menú";
+        if($action == "eliminar"){
+            $price = $this->menu->getPrice($food);
+            $amount = $this->command[$food];
+            $totalToSubstract = $price * $amount;
+            unset($this->command[$food]);
+            $this->totalPrice -= $totalToSubstract;
         }
 
-        $this->totalPrice += $price * $amount;
-
-        $this->command[$food] = $this->command[$food] + $amount;
 
         $fullCommand = [];
         forEach($this->command as $key => $value){
