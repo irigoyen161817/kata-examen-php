@@ -82,4 +82,18 @@ class CommandTest extends TestCase
         $this->assertEquals("chistorra x1 | Total: 10.00", $result);
     }
 
+    /**
+     * @test
+     */
+    public function whenCommandIsEmptyAfterDeleteReturnsEmptyMessage(): void{
+        $command = new Command(new MenuStub());
+
+        $command->handle("añadir chistorra");
+
+        $result = $command->handle("eliminar chistorra");
+
+        $this->assertEquals("La comanda ha sido vaciada", $result);
+
+    }
+
 }
