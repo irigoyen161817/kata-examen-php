@@ -14,7 +14,7 @@ class Command
         }
 
         $this->command[$food] = $this->command[$food] + $amount;
-        
+
         $fullCommand = [];
         forEach($this->command as $key => $value){
             $fullCommand[] = $key . " x" . $value;

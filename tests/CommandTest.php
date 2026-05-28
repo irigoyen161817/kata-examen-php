@@ -15,7 +15,7 @@ class CommandTest extends TestCase
 
         $result = $command->handle("añadir pizza");
 
-        $this->assertEquals("pizza", $result);
+        $this->assertEquals("pizza x1", $result);
     }
 
     /**
