@@ -23,6 +23,17 @@ class CommandTest extends TestCase
     /**
      * @test
      */
+    public function givenInstructionWithRandomCapitalLettersDoesntAffect(): void{
+        $command = new Command(new MenuStub());
+
+        $result = $command->handle("AñAdIr PiZzA");
+
+        $this->assertEquals("pizza x1 | Total: 10.00", $result);
+    }
+
+    /**
+     * @test
+     */
     public function givenMultipleAddInstructionsReturnsFullCommand(): void{
         $command = new Command(new MenuStub());
 
