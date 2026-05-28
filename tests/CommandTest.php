@@ -69,4 +69,17 @@ class CommandTest extends TestCase
         $this->assertEquals("pizza x1 | Total: 10.00", $result);
     }
 
+    /**
+     * @test
+     */
+    public function givenDeleteInstructionDeletesFoodFromCommand(): void{
+        $command = new Command(new MenuStub());
+
+        $command->handle("añadir pizza");
+        $command->handle("añadir chistorra");
+
+        $result = $command->handle("eliminar pizza");
+        $this->assertEquals("chistorra x1 | Total: 10.00", $result);
+    }
+
 }
