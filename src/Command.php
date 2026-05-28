@@ -15,7 +15,7 @@ class Command
     public function handle($instruction): string{
         $instruction = strtolower($instruction);
         $instruction = explode(" ", $instruction);
-        
+
         $action = $instruction[0];
         $food = $instruction[1];
 
@@ -48,11 +48,6 @@ class Command
 
             unset($this->command[$food]);
 
-            $fullCommand = [];
-            forEach($this->command as $key => $value){
-                $fullCommand[] = $key . " x" . $value;
-            }
-            return implode(", ",$fullCommand);
         }
         if($action == "vaciar"){
             $this->command = [];
@@ -72,7 +67,7 @@ class Command
             $fullCommand[] = $key . " x" . $value;
         }
         $commandResult = implode(", ",$fullCommand);
-        if($action == "eliminar"){
+        if($action == "añadir"){
             $commandResult .= " | Total: " . number_format($this->totalPrice, 2);
         }
         return $commandResult;
