@@ -15,8 +15,10 @@ class Command
     public function handle($instruction): string{
         $instruction = strtolower($instruction);
         $instruction = explode(" ", $instruction);
+        
         $action = $instruction[0];
         $food = $instruction[1];
+
         if($action == "añadir"){
             $amount = 1;
             if(isset($instruction[2])){
@@ -42,8 +44,10 @@ class Command
             $price = $this->menu->getPrice($food);
             $amount = $this->command[$food];
             $totalToSubstract = $price * $amount;
-            unset($this->command[$food]);
             $this->totalPrice -= $totalToSubstract;
+
+            unset($this->command[$food]);
+
             $fullCommand = [];
             forEach($this->command as $key => $value){
                 $fullCommand[] = $key . " x" . $value;
