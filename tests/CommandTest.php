@@ -18,4 +18,15 @@ class CommandTest extends TestCase
         $this->assertEquals("pizza", $result);
     }
 
+    /**
+     * @test
+     */
+    public function givenAddPizzaWithAmountReturnsPizzaXAmount(): void{
+        $command = new Command();
+
+        $result = $command->handle("añadir pizza 2");
+
+        $this->assertEquals("pizza x2", $result);
+    }
+
 }
