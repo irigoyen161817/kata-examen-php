@@ -35,6 +35,10 @@ class Command
         }
 
         if($action == "eliminar"){
+            if(!array_key_exists($food, $this->command)){
+                return "El plato seleccionado no existe";
+            }
+
             $price = $this->menu->getPrice($food);
             $amount = $this->command[$food];
             $totalToSubstract = $price * $amount;
