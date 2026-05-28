@@ -2,7 +2,7 @@
 
 namespace Deg540\KataExamen\Test;
 
-use MongoDB\Driver\Command;
+use Deg540\KataExamen\Command;
 use PHPUnit\Framework\TestCase;
 
 class CommandTest extends TestCase
