@@ -58,4 +58,15 @@ class CommandTest extends TestCase
         $this->assertEquals("El plato seleccionado no existe en el menú", $result);
     }
 
+    /**
+     * @test
+     */
+    public function givenAddInstructionReturnsCommandWithTotalPrice(): void{
+        $command = new Command(new MenuStub());
+
+        $result = $command->handle("añadir pizza");
+
+        $this->assertEquals("pizza x1 | Total: 10.00", $result);
+    }
+
 }
